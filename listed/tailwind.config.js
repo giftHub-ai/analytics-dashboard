@@ -2,13 +2,14 @@
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
         montserrat: ["Montserrat"],
+        lato: ["Lato"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -19,8 +20,12 @@ module.exports = {
         primary: "#FFFFFF",
         background: "#F5F5F5",
         secondary: "#858585",
+
         // ...
       },
+      fontSize: {
+        tenpx: '10px',
+      }
     },
   },
   plugins: [],
