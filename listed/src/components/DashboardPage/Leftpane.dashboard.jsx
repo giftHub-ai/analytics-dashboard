@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Link } from "react-router-dom";
 const leftData = [
   { img: "./assets/dashboard_icon.svg", text: "Dashboard" },
   { img: "./assets/dashboard_icon.svg", text: "Transactions" },
@@ -49,8 +50,8 @@ const Leftpane = ({ activeState, setActiveState }) => {
           })}
         </div>
         <div className="text-[0.875rem] ">
-          <p>Help</p>
-          <p>Contact Us</p>
+          <button>Help</button><br />
+          <button>Contact Us</button>
         </div>
       </div>
     </div>

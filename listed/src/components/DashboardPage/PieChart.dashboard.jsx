@@ -14,23 +14,22 @@ const data01 = [
   },
 ];
 const COLORS = ["#98D89E", "#F6DC7D", "#EE8484"];
-const Bullet = (ind) => {
+const Bullet = ({ ind }) => {
   console.log(ind);
   if (ind === 0) {
     return (
       <div className={`w-[11px] h-[11px] bg-[#98D89E] rounded-full `}></div>
     );
-  }
-  if (ind === 1) {
+  } else if (ind === 1) {
     return (
       <div className={`w-[11px] h-[11px] bg-[#F6DC7D] rounded-full `}></div>
     );
-  }
-  if (ind === 2) {
+  } else if (ind === 2) {
     return (
       <div className={`w-[11px] h-[11px] bg-[#EE8484] rounded-full `}></div>
     );
   }
+  return <div className={`w-[11px] h-[11px] bg-[#29ac6d] rounded-full `}></div>;
 };
 const CustomLegend = ({ ind, text, value }) => {
   return (
@@ -45,8 +44,8 @@ const CustomLegend = ({ ind, text, value }) => {
 };
 const RenderPieChart = () => {
   return (
-    <div className="mt-4  w-1/2 h-full">
-      <div className=" bg-white   rounded-[20px] flex w-full relative h-full pb-6">
+    <div className="mt-4  basis-1/2 h-full min-h-full">
+      <div className=" bg-white   rounded-[20px] flex w-full relative min-h-full pb-6">
         <div className="absolute top-4 text-black z-20 w-full  flex justify-between px-4 ">
           <h6 className="font-montserrat text-[18px] font-bold">
             Top Products
@@ -74,12 +73,6 @@ const RenderPieChart = () => {
                 <Cell fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            {/* <Legend
-            verticalAlign="middle"
-            align="right"
-            height={16}
-            iconType="circle"
-          /> */}
           </PieChart>
           <div className="">
             {data01.map((item, index) => (

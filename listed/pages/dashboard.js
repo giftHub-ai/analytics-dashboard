@@ -91,7 +91,7 @@ const dashboard = () => {
           <Header />
           <Cards/>
           <LineChart/>
-          <div className="flex ">
+          <div className="flex gap-x-2 ">
           {domLoaded && (
             <RenderPieChart/>
             )}
