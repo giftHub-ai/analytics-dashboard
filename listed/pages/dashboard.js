@@ -3,13 +3,21 @@ import { auth } from "../src/config/firebase";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Leftpane from "@/src/components/DashboardPage/Leftpane.dashboard";
-import {
-  getAuth,
-  onAuthStateChanged
-} from "firebase/auth";
-import {signOutUser} from "../src/config/firebase"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { signOutUser } from "../src/config/firebase";
+import Header from "@/src/components/DashboardPage/Header.dashboard";
+import Cards from "@/src/components/DashboardPage/Cards.dashboard";
+import LineChart from "@/src/components/DashboardPage/LineChart.dashboard";
+import RenderPieChart from "@/src/components/DashboardPage/PieChart.dashboard";
+import Schedule from "@/src/components/DashboardPage/Schedule.dashboard";
 
 const dashboard = () => {
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   let displayName = null;
@@ -19,29 +27,30 @@ const dashboard = () => {
 
   async function IsUserSignedIn() {
     try {
-        var userData = null
-        await new Promise((resolve, reject) =>
-            onAuthStateChanged(getAuth(),
-                user => {
-                    if (user) {
-                        // User is signed in.
-                        resolve(user)
-                        userData = user
-                        console.log(userData.displayName);
-                    } else {
-                        // No user is signed in.
-                        console.log("not signed in");
-                        reject('no user logged in')
-                    }
-                },
-                // Prevent console error
-                error => reject(error)
-            )
+      var userData = null;
+      await new Promise((resolve, reject) =>
+        onAuthStateChanged(
+          getAuth(),
+          (user) => {
+            if (user) {
+              // User is signed in.
+              resolve(user);
+              userData = user;
+              console.log(userData.displayName);
+            } else {
+              // No user is signed in.
+              console.log("not signed in");
+              reject("no user logged in");
+            }
+          },
+          // Prevent console error
+          (error) => reject(error)
         )
+      );
     } catch (error) {
-        return false
+      return false;
     }
-}
+  }
 
   const checkUserSignedIn = async () => {
     console.log(user);
@@ -76,12 +85,18 @@ const dashboard = () => {
   const [activeState, setActiveState] = useState(0);
   return (
     <>
-      <div className="w-screen min-h-screen flex text-white p-10  ">
-        <Leftpane activeState={activeState} setActiveState={setActiveState}/>
+      <div className="w-screen min-h-screen flex text-white p-5  ">
+        <Leftpane activeState={activeState} setActiveState={setActiveState} />
         <div className="basis-4/5 px-14 border">
-          
-
-          <button onClick={()=>{signOutUser();console.log("signupur");}}>Logout</button>
+          <Header />
+          <Cards/>
+          <LineChart/>
+          <div className="flex ">
+          {domLoaded && (
+            <RenderPieChart/>
+            )}
+            <Schedule/>
+          </div>
         </div>
       </div>
     </>
@@ -89,3 +104,14 @@ const dashboard = () => {
 };
 
 export default dashboard;
+
+
+
+{/* <button
+            onClick={() => {
+              signOutUser();
+              console.log("signupur");
+            }}
+          >
+            Logout
+          </button> */}
