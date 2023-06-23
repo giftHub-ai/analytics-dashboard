@@ -1,18 +1,7 @@
+import { useEffect, useState } from "react";
 import { Cell, Legend, Pie, PieChart } from "recharts";
-const data01 = [
-  {
-    name: "Basic Tees",
-    value: 55,
-  },
-  {
-    name: "Custom Short Pants",
-    value: 31,
-  },
-  {
-    name: "Super Hoodies",
-    value: 14,
-  },
-];
+import axios from "axios";
+
 const COLORS = ["#98D89E", "#F6DC7D", "#EE8484"];
 const Bullet = ({ ind }) => {
   console.log(ind);
@@ -42,7 +31,35 @@ const CustomLegend = ({ ind, text, value }) => {
     </div>
   );
 };
+
+
+
 const RenderPieChart = () => {
+  const [selectedValue, setSelectedValue] = useState("3");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    callApi();
+  }, [selectedValue]);
+  const handleSelectChange = (e) => {
+    // console.log(selectedValue);
+    setSelectedValue(e.target.value);
+  };
+  const callApi = () => {
+    axios.get(`http://localhost:3000/api/product?value=${selectedValue}`)
+      .then((response) => {
+        const data = response.data.data;
+        console.log(data); // Handle the response data as needed
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error); // Handle any errors that occur during the request
+      });
+  };
+
+  if (loading === true) return <div className="">Loading</div>;
   return (
     <div className="mt-4  basis-1/2 h-full min-h-full">
       <div className=" bg-white   rounded-[20px] flex w-full relative min-h-full pb-6">
@@ -51,17 +68,21 @@ const RenderPieChart = () => {
             Top Products
           </h6>
           <div className="text-[12px]">
-            <select name="date" id="">
-              <option value="3_2021">May - June 2021</option>
-              <option value="3_2021">May - June 2021</option>
-              <option value="3_2021">May - June 2021</option>
+            <select
+              name="date"
+              value={selectedValue}
+              onChange={handleSelectChange}
+            >
+              <option value="3">May - June 2021</option>
+              <option value="4">June - July 2021</option>
+              <option value="5">August - Sept 2021</option>
             </select>
           </div>
         </div>
         <div className=" mt-12 flex text-black">
           <PieChart width={180} height={100}>
             <Pie
-              data={data01}
+              data={data}
               dataKey="value"
               nameKey="name"
               cx="50%"
@@ -69,13 +90,13 @@ const RenderPieChart = () => {
               outerRadius={50}
               fill="#8884d8"
             >
-              {data01.map((entry, index) => (
+              {data.map((entry, index) => (
                 <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
           </PieChart>
           <div className="">
-            {data01.map((item, index) => (
+            {data.map((item, index) => (
               <CustomLegend
                 key={index}
                 ind={index}

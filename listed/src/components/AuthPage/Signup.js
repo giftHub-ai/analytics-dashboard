@@ -8,7 +8,7 @@ import {
 } from "../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import Image from "next/image";
-const Signup = () => {
+const Signup = ({setLogin}) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -95,20 +95,18 @@ const Signup = () => {
           className="bg-background  p-1 px-4 mt-2 rounded-[10px] outline-none"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <a href="" className="mt-5 text-[#346BD4] text-base font-lato ">
-          Forgot Password?
-        </a>
+   
         <button
           className="bg-black text-center py-2 font-bold rounded-[10px] mt-5 text-white"
           onClick={() => signIn()}
         >
-          Sign In
+          Sign Up
         </button>
         {errMessage && <div className="text-red-500">{errMessage}</div>}
       </div>
       <p className="text-center font-lato mt-5">
-        <span className="text-secondary ">Don’t have an account?</span>
-        <a href=""> Register here</a>
+        <span className="text-secondary ">Already have an account?</span>
+        <span onClick={()=>setLogin(true)} className="cursor-pointer"> Signin here</span>
       </p>
     </div>
   );

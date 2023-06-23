@@ -8,7 +8,7 @@ import {
 } from "../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import Image from "next/image";
-const Signin = () => {
+const Signin = ({setLogin}) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -107,7 +107,7 @@ const Signin = () => {
       </div>
       <p className="text-center font-lato mt-5">
         <span className="text-secondary ">Don’t have an account?</span>
-        <a href=""> Register here</a>
+        <span className="cursor-pointer" onClick={()=>setLogin(false)}> Register here</span>
       </p>
     </div>
   );

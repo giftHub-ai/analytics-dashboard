@@ -17,10 +17,10 @@ const Leftpane = ({
   const Options = ({ isActive, text, img, ind, setActiveState }) => {
     return (
       <div
-        className={`flex gap-x-5 text-white text-xs md:text-[1.125rem] font-montserrat  mb-10  cursor-pointer min-w-fit `}
+        className={`flex md:gap-x-5 gap-x-2 text-white text-xs md:text-[1.125rem] font-montserrat  mb-10  cursor-pointer min-w-fit `}
         onClick={() => setActiveState(ind)}
       >
-        <Image alt="icon" height={18} width={18} src={img}></Image>
+        <Image alt="icon" height={18} width={18} src={img} ></Image>
         <p className={` ${isActive == ind ? "font-bold" : "font-normal"}`}>
           {text}
         </p>
@@ -34,13 +34,13 @@ const Leftpane = ({
         alt="E"
         height={20}
         width={20}
-        className="text-black md:hidden  absolute mt-4 ml-2"
+        className={`text-black md:hidden  fixed mt-4  z-50 ${  showleftPane?"mr-0 text-white ":null}`}
         onClick={() => {
           setShowLeftPane(!showleftPane);
         }}
       ></Image>
       <div
-        className={`  md:block md:basis-1/5 bg-black rounded-[30px] min-h-full min-w-fit ${
+        className={`  md:block md:basis-1/5 bg-black min-h-full  ${  showleftPane?"min-w-[150px] ": "rounded-[30px]"}  ${
           showleftPane ? "block basis-4/5 h-screen z-30" : "hidden"
         }`}
       >
