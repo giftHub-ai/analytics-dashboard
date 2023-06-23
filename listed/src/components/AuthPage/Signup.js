@@ -4,20 +4,21 @@ import { useRouter } from "next/router";
 import {
   auth,
   googleProvider,
-  signInAuthUserWithEmailAndPassword,
+  createAuthUserWithEmailAndPassword,
 } from "../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import Image from "next/image";
-const Signin = () => {
+const Signup = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   console.log(auth?.currentUser?.email);
   const [errMessage, setErrorMessage] = useState(null);
+  
   const signIn = async () => {
     console.log("here");
     try {
-      await signInAuthUserWithEmailAndPassword(email, password).then(
+      await createAuthUserWithEmailAndPassword(email, password).then(
         (result) => {
           const user = result.user;
           console.log(user);
@@ -47,8 +48,8 @@ const Signin = () => {
 
   return (
     <div className="min-w-min w-4/12 mx-4  ">
-      <h3 className="text-2xl md:text-4xl font-bold">Sign In</h3>
-      <p className="text-base">Sign in to your account</p>
+      <h3 className="text-2xl md:text-4xl font-bold">Sign Up</h3>
+      <p className="text-base">Sign up to your account</p>
       <div className="flex gap-x-6 justify-center [&>*]:text-secondary  [&>*]:text-xs my-8">
         <button
           className="bg-white p-2 rounded-[10px] flex items-center"
@@ -113,4 +114,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

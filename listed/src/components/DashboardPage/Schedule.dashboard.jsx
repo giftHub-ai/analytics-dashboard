@@ -8,9 +8,9 @@ const scheduleData = [
     location: "at Sunset Road, Kuta, Bali",
   },
   {
-    title: "Meeting with suppliers from Kuta Bali",
-    time: "14.00-15.00",
-    location: "at Sunset Road, Kuta, Bali",
+    title: "Check operation at Giga Factory 1",
+    time: "18.00-20.00",
+    location: "at Central Jakarta",
   },
   {
     title: "Meeting with suppliers from Kuta Bali",

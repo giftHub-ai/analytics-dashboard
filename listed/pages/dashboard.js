@@ -20,10 +20,7 @@ const dashboard = () => {
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  let displayName = null;
-  let email = null;
-  let photoURL = null;
-  let emailVerified = null;
+
 
   async function IsUserSignedIn() {
     try {
@@ -52,22 +49,6 @@ const dashboard = () => {
     }
   }
 
-  const checkUserSignedIn = async () => {
-    console.log(user);
-    try {
-      if (user !== null) {
-        displayName = user.displayName;
-        email = user.email;
-        photoURL = user.photoURL;
-        emailVerified = user.emailVerified;
-        setLoading(false);
-      } else {
-        // router.push("/");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     IsUserSignedIn();
@@ -85,7 +66,7 @@ const dashboard = () => {
   const [activeState, setActiveState] = useState(0);
   return (
     <>
-      <div className="w-screen min-h-screen flex text-white  md:p-5 ">
+      <div className="w-screen min-h-screen flex text-white min-w-fit  md:p-5 ">
         <Leftpane
           activeState={activeState}
           setActiveState={setActiveState}
@@ -93,8 +74,8 @@ const dashboard = () => {
           setShowLeftPane={setShowLeftPane}
         />
         <div
-          className={`basis-5/5 md:basis-4/5 px-8 md:px-14 ${
-            showLeftPane ? "basis-1/2" : null
+          className={`md:basis-4/5 px-2 md:px-14 ${
+            showLeftPane ? "basis-5/5" : null
           }`}
         >
           <Header />

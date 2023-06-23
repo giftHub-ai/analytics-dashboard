@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const leftData = [
   { img: "./assets/dashboard_icon.svg", text: "Dashboard" },
-  { img: "./assets/dashboard_icon.svg", text: "Transactions" },
-  { img: "./assets/dashboard_icon.svg", text: "Schedules" },
-  { img: "./assets/dashboard_icon.svg", text: "Users" },
-  { img: "./assets/dashboard_icon.svg", text: "Settings" },
+  { img: "./assets/left_transaction_icon.svg", text: "Transactions" },
+  { img: "./assets/left_schedule_icon.svg", text: "Schedules" },
+  { img: "./assets/left_user_icon.svg", text: "Users" },
+  { img: "./assets/left_setting_icon.svg", text: "Settings" },
 ];
 const Leftpane = ({
   activeState,
@@ -17,15 +17,10 @@ const Leftpane = ({
   const Options = ({ isActive, text, img, ind, setActiveState }) => {
     return (
       <div
-        className={`flex gap-x-5 text-white text-[1.125rem] font-montserrat  mb-10  cursor-pointer `}
+        className={`flex gap-x-5 text-white text-xs md:text-[1.125rem] font-montserrat  mb-10  cursor-pointer min-w-fit `}
         onClick={() => setActiveState(ind)}
       >
-        <Image
-          alt="icon"
-          height={18}
-          width={18}
-          src={"./assets/dashboard_icon.svg"}
-        ></Image>
+        <Image alt="icon" height={18} width={18} src={img}></Image>
         <p className={` ${isActive == ind ? "font-bold" : "font-normal"}`}>
           {text}
         </p>
@@ -34,7 +29,7 @@ const Leftpane = ({
   };
   return (
     <>
-          <Image
+      <Image
         src={"/assets/hamburgermenu.svg"}
         alt="E"
         height={20}
@@ -42,17 +37,16 @@ const Leftpane = ({
         className="text-black md:hidden  absolute mt-4 ml-2"
         onClick={() => {
           setShowLeftPane(!showleftPane);
-          console.log(showleftPane);
         }}
       ></Image>
       <div
-        className={`  md:block md:basis-1/5 bg-black rounded-[30px] min-h-full ${
-          showleftPane ? "block w-screen h-screen z-30" : "hidden"
+        className={`  md:block md:basis-1/5 bg-black rounded-[30px] min-h-full min-w-fit ${
+          showleftPane ? "block basis-4/5 h-screen z-30" : "hidden"
         }`}
       >
         <div className=" w-[70%] mx-auto flex flex-col justify-evenly h-full  ">
           <div className="">
-            <h1 className="font-bold font-montserrat my-auto text-2xl text-primary ">
+            <h1 className="font-bold font-montserrat my-auto text-base md:text-2xl text-primary ">
               Board.
             </h1>
           </div>
@@ -77,7 +71,6 @@ const Leftpane = ({
           </div>
         </div>
       </div>
-
     </>
   );
 };

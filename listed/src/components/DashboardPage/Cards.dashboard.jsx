@@ -17,7 +17,7 @@ const Cards = () => {
       <div className="bg-[#F4ECDD] relative p-4 pt-12  pr-20 rounded-[10px]">
       <Image
           className="absolute top-[20px] right-[25px]"
-            src="./assets/revenue_icon.svg"
+            src="./assets/total_transactions_icon.svg"
             height={26}
             width={24}
             alt="search icon"
@@ -28,7 +28,7 @@ const Cards = () => {
       <div className="bg-[#EFDADA] relative p-4 pt-12  pr-20 rounded-[10px]">
       <Image
           className="absolute top-[20px] right-[25px]"
-            src="./assets/revenue_icon.svg"
+            src="./assets/total_likes.svg"
             height={26}
             width={24}
             alt="search icon"
@@ -39,7 +39,7 @@ const Cards = () => {
       <div className="bg-[#DEE0EF] relative p-4 pt-12  pr-20 rounded-[10px]">
       <Image
           className="absolute top-[20px] right-[25px]"
-            src="./assets/revenue_icon.svg"
+            src="./assets/total_users.svg"
             height={26}
             width={24}
             alt="search icon"
