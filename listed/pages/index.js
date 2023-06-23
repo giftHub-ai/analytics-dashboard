@@ -1,9 +1,4 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { Montserrat } from 'next/font/google'
 import Signin from '@/src/components/AuthPage/Signin'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (

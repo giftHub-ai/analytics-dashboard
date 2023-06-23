@@ -11,7 +11,7 @@ const Leftpane = ({ activeState, setActiveState }) => {
   const Options = ({ isActive, text, img, ind, setActiveState }) => {
     return (
       <div
-        className={`flex gap-x-5 text-white text-[1.125rem] font-montserrat  mb-10 border-white cursor-pointer`}
+        className={`flex gap-x-5 text-white text-[1.125rem] font-montserrat  mb-10  cursor-pointer`}
         onClick={() => setActiveState(ind)}
       >
         <Image
@@ -28,12 +28,13 @@ const Leftpane = ({ activeState, setActiveState }) => {
   };
   return (
     <div className="basis-1/5 bg-black rounded-[30px] min-h-full">
-      <div className="w-[70%]  mx-auto  flex flex-col h-full">
+      <div className="w-[70%]  mx-auto  flex flex-col justify-evenly h-full  ">
+      <div className="">
         <h1 className="font-bold font-montserrat my-auto text-2xl text-primary ">
           Board.
         </h1>
-<div className="">
-        <div className="flex flex-col border">
+        </div>
+        <div className="flex flex-col ">
           {leftData.map((item, ind) => {
             return (
               <Options
@@ -50,7 +51,7 @@ const Leftpane = ({ activeState, setActiveState }) => {
         <div className="text-[0.875rem] ">
           <p>Help</p>
           <p>Contact Us</p>
-        </div></div>
+        </div>
       </div>
     </div>
   );

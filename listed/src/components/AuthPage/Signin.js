@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { redirect } from "next/navigation";
-import { useRouter } from 'next/router'
-import { auth, googleProvider } from "../../config/firebase";
+import { useRouter } from "next/router";
 import {
-  createUserWithEmailAndPassword,
+  auth,
+  googleProvider,
+  signInAuthUserWithEmailAndPassword,
+} from "../../config/firebase";
+import {
   signInWithPopup,
-  signOut,
 } from "firebase/auth";
 import Image from "next/image";
 const Signin = () => {
-  const router = useRouter();  
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //   console.log(auth?.currentUser?.email);
-  const signIn = async () => {
 
+  const signIn = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      const user = result.user;
-      console.log(user);
-      router.push("/dashboard")
+      await signInAuthUserWithEmailAndPassword(email, password).then(
+        (result) => {
+          const user = result.user;
+          console.log(user);
+          router.push("/dashboard");
+        }
+      );
     } catch (err) {
       console.error(err);
     }
@@ -29,15 +34,15 @@ const Signin = () => {
       await signInWithPopup(auth, googleProvider).then((result) => {
         const user = result.user;
         console.log(user);
-        router.push("/dashboard")
+        router.push("/dashboard");
       });
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-          console.error(error);
+      console.error(error);
     }
   };
-  
+
   return (
     <div className="min-w-min w-4/12  ">
       <h3 className="text-4xl font-bold">Sign In</h3>
@@ -47,11 +52,23 @@ const Signin = () => {
           className="bg-white p-2 rounded-[10px] flex "
           onClick={() => signInWithGoogle()}
         >
-            <Image alt="google" height={14} width={14} src={"./assets/google.svg"} className="mr-2"></Image>
+          <Image
+            alt="google"
+            height={14}
+            width={14}
+            src={"./assets/google.svg"}
+            className="mr-2"
+          ></Image>
           Sign in with Google
         </button>
         <button className="bg-white p-2 rounded-[10px] flex">
-            <Image alt="google" height={14} width={14} src={"./assets/apple.svg"} className="mr-2"></Image>
+          <Image
+            alt="google"
+            height={14}
+            width={14}
+            src={"./assets/apple.svg"}
+            className="mr-2"
+          ></Image>
           Sign in with Apple
         </button>
       </div>
