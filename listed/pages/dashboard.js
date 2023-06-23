@@ -80,22 +80,29 @@ const dashboard = () => {
       console.error(err);
     }
   };
-
+  const [showLeftPane, setShowLeftPane] = useState(false);
   if (loading === true) return <div className="">LOADING...</div>;
   const [activeState, setActiveState] = useState(0);
   return (
     <>
-      <div className="w-screen min-h-screen flex text-white p-5  ">
-        <Leftpane activeState={activeState} setActiveState={setActiveState} />
-        <div className="basis-4/5 px-14 border">
+      <div className="w-screen min-h-screen flex text-white  md:p-5 ">
+        <Leftpane
+          activeState={activeState}
+          setActiveState={setActiveState}
+          showleftPane={showLeftPane}
+          setShowLeftPane={setShowLeftPane}
+        />
+        <div
+          className={`basis-5/5 md:basis-4/5 px-8 md:px-14 ${
+            showLeftPane ? "basis-1/2" : null
+          }`}
+        >
           <Header />
-          <Cards/>
-          <LineChart/>
-          <div className="flex gap-x-2 ">
-          {domLoaded && (
-            <RenderPieChart/>
-            )}
-            <Schedule/>
+          <Cards />
+          <LineChart />
+          <div className="md:flex gap-x-8 ">
+            {domLoaded && <RenderPieChart />}
+            <Schedule />
           </div>
         </div>
       </div>
@@ -105,13 +112,13 @@ const dashboard = () => {
 
 export default dashboard;
 
-
-
-{/* <button
+{
+  /* <button
             onClick={() => {
               signOutUser();
               console.log("signupur");
             }}
           >
             Logout
-          </button> */}
+          </button> */
+}

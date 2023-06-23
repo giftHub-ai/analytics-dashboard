@@ -1,10 +1,8 @@
 import Image from "next/image";
 
-
-
 const Cards = () => {
   return (
-    <div className="flex justify-between my-4 text-black">
+    <div className="flex justify-between my-2 mb-8 md:mb-2 text-black flex-col md:flex-row gap-y-8 ">
       <div className="bg-[#DDEFE0] relative p-4 pt-12  pr-20 rounded-[10px]">
       <Image
           className="absolute top-[20px] right-[25px]"

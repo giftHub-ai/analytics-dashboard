@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
   CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
 const data = [
   { name: "", user: 100, guest: 200, amt: 2400 },
@@ -19,7 +20,7 @@ const data = [
 const RenderLineChart = () => {
   return (
     <div className="w-full bg-white p-4 pt-12 relative rounded-2xl">
-      <div className="absolute top-5 text-black z-20">
+      <div className="absolute top-5 text-black z-20 flex flex-row  md:flex-col">
         <h6 className="font-montserrat text-[18px] font-bold">Activities</h6>
         <select name="date" id="">
           <option value="3_2021">May - June 2021</option>
@@ -27,6 +28,7 @@ const RenderLineChart = () => {
           <option value="3_2021">May - June 2021</option>
         </select>
       </div>
+      <ResponsiveContainer width="100%" height={270}>
       <LineChart width={1000} height={270} data={data}>
         <Line
           type="monotone"
@@ -46,6 +48,7 @@ const RenderLineChart = () => {
         />
         <CartesianGrid vertical={false} />
       </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

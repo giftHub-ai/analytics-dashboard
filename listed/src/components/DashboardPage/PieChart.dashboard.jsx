@@ -70,13 +70,14 @@ const RenderPieChart = () => {
               fill="#8884d8"
             >
               {data01.map((entry, index) => (
-                <Cell fill={COLORS[index % COLORS.length]} />
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
           </PieChart>
           <div className="">
             {data01.map((item, index) => (
               <CustomLegend
+                key={index}
                 ind={index}
                 text={item.name}
                 value={item.value}
