@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const COLORS = ["#98D89E", "#F6DC7D", "#EE8484"];
 const Bullet = ({ ind }) => {
@@ -21,6 +22,7 @@ const Bullet = ({ ind }) => {
   return <div className={`w-[11px] h-[11px] bg-[#29ac6d] rounded-full `}></div>;
 };
 const CustomLegend = ({ ind, text, value }) => {
+  
   return (
     <div className="">
       <div className="flex items-center ">
@@ -35,6 +37,10 @@ const CustomLegend = ({ ind, text, value }) => {
 
 
 const RenderPieChart = () => {
+  const router = useRouter();
+
+  const modifiedPathname = router.pathname.replace('/dashboard', '');
+
   const [selectedValue, setSelectedValue] = useState("3");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +53,7 @@ const RenderPieChart = () => {
     setSelectedValue(e.target.value);
   };
   const callApi = () => {
-    axios.get(`http://localhost:3000/api/product?value=${selectedValue}`)
+    axios.get(`${modifiedPathname}/api/product?value=${selectedValue}`)
       .then((response) => {
         const data = response.data.data;
         console.log(data); // Handle the response data as needed

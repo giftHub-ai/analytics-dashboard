@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import {
   LineChart,
   Line,
@@ -15,14 +16,18 @@ const RenderLineChart = () => {
   const [selectedValue, setSelectedValue] = useState("3");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   const handleSelectChange = (e) => {
     // console.log(selectedValue);
     setSelectedValue(e.target.value);
   };
   const callApi = () => {
+// Remove '/dashboard' from the pathname
+const modifiedPathname = router.pathname.replace('/dashboard', '');
+
     axios
-      .get(`http://localhost:3000/api/activities?value=${selectedValue}`)
+      .get(`${modifiedPathname}/api/activities?value=${selectedValue}`)
       .then((response) => {
         const data = response.data.data;
         console.log(data); // Handle the response data as needed

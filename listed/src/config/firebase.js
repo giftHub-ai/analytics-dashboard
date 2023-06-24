@@ -36,7 +36,6 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
     email,
     password
   );
-  await sendEmailVerification(userCredential.user);
   return userCredential;
 };
 

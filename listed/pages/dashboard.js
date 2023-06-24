@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { auth } from "../src/config/firebase";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Leftpane from "@/src/components/DashboardPage/Leftpane.dashboard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -13,12 +12,10 @@ import Schedule from "@/src/components/DashboardPage/Schedule.dashboard";
 
 const dashboard = () => {
   const [domLoaded, setDomLoaded] = useState(false);
-
   useEffect(() => {
     setDomLoaded(true);
   }, []);
 
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
 
@@ -30,12 +27,10 @@ const dashboard = () => {
           getAuth(),
           (user) => {
             if (user) {
-              // User is signed in.
               resolve(user);
               userData = user;
               console.log(userData.displayName);
             } else {
-              // No user is signed in.
               console.log("not signed in");
               reject("no user logged in");
             }
@@ -66,7 +61,7 @@ const dashboard = () => {
   const [activeState, setActiveState] = useState(0);
   return (
     <>
-      <div className="w-screen min-h-screen flex text-white min-w-fit  md:p-5 ">
+      <div className={`min-h-screen flex text-white min-w-fit md:p-5 my-4   ${showLeftPane?"px-0 ": "px-4"}`}>
         <Leftpane
           activeState={activeState}
           setActiveState={setActiveState}
@@ -74,7 +69,7 @@ const dashboard = () => {
           setShowLeftPane={setShowLeftPane}
         />
         <div
-          className={`md:basis-4/5 px-2 md:px-14 ${
+          className={`md:basis-4/5 px-2 xl:px-14 ${
             showLeftPane ? "basis-5/5" : null
           }`}
         >

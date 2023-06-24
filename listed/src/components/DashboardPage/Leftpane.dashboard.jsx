@@ -34,17 +34,17 @@ const Leftpane = ({
         alt="E"
         height={20}
         width={20}
-        className={`text-black md:hidden  fixed mt-4  z-50 ${  showleftPane?"mr-0 text-white ":null}`}
+        className={`text-black md:hidden  fixed mt-4  z-50 ${  showleftPane?"ml-40 text-white ":null}`}
         onClick={() => {
           setShowLeftPane(!showleftPane);
         }}
       ></Image>
       <div
-        className={`  md:block md:basis-1/5 bg-black min-h-full  ${  showleftPane?"min-w-[150px] ": "rounded-[30px]"}  ${
+        className={`  md:block md:basis-1/5 bg-black min-h-full min-w-[12rem]  ${  showleftPane?"min-w-[150px] ": "rounded-[30px]"}  ${
           showleftPane ? "block basis-4/5 h-screen z-30" : "hidden"
         }`}
       >
-        <div className=" w-[70%] mx-auto flex flex-col justify-evenly h-full  ">
+        <div className=" w-[70%] mx-auto flex flex-col justify-evenly min-h-full  ">
           <div className="">
             <h1 className="font-bold font-montserrat my-auto text-base md:text-2xl text-primary ">
               Board.

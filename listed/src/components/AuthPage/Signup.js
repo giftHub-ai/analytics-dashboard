@@ -8,13 +8,12 @@ import {
 } from "../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
 import Image from "next/image";
-const Signup = ({setLogin}) => {
+const Signup = ({ setLogin }) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //   console.log(auth?.currentUser?.email);
   const [errMessage, setErrorMessage] = useState(null);
-  
+
   const signIn = async () => {
     console.log("here");
     try {
@@ -24,9 +23,9 @@ const Signup = ({setLogin}) => {
           console.log(user);
           router.push("/dashboard");
         }
-        );
-      } catch (err) {
-        setErrorMessage(err.code);
+      );
+    } catch (err) {
+      setErrorMessage(err.code);
       console.error(err);
     }
   };
@@ -42,7 +41,6 @@ const Signup = ({setLogin}) => {
       const errorMessage = error.message;
       console.error(error);
       setErrorMessage(error.code);
-
     }
   };
 
@@ -62,7 +60,7 @@ const Signup = ({setLogin}) => {
             src={"./assets/google.svg"}
             className="mr-2"
           ></Image>
-          Sign in with Google
+          Sign up with Google
         </button>
         <button className="bg-white p-2 rounded-[10px] flex items-center">
           <Image
@@ -72,7 +70,7 @@ const Signup = ({setLogin}) => {
             src={"./assets/apple.svg"}
             className="mr-2"
           ></Image>
-          Sign in with Apple
+          Sign up with Apple
         </button>
       </div>
       <div className="w-full py-8 bg-white flex flex-col p-8  rounded-[20px] [&>*]:text-base">
@@ -95,7 +93,7 @@ const Signup = ({setLogin}) => {
           className="bg-background  p-1 px-4 mt-2 rounded-[10px] outline-none"
           onChange={(e) => setPassword(e.target.value)}
         />
-   
+
         <button
           className="bg-black text-center py-2 font-bold rounded-[10px] mt-5 text-white"
           onClick={() => signIn()}
@@ -106,7 +104,10 @@ const Signup = ({setLogin}) => {
       </div>
       <p className="text-center font-lato mt-5">
         <span className="text-secondary ">Already have an account?</span>
-        <span onClick={()=>setLogin(true)} className="cursor-pointer"> Signin here</span>
+        <span onClick={() => setLogin(true)} className="cursor-pointer">
+          {" "}
+          Signin here
+        </span>
       </p>
     </div>
   );
