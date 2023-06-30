@@ -6,7 +6,7 @@ const Header = () => {
       <h2 className="text-2xl  font-montserrat font-bold text-black max-sm:ml-8">Dashboard</h2>
       <div className=" flex gap-x-7  items-center ">
         <div className=" relative md:block hidden">
-          <input type="text" placeholder={`Search...`} className="text-[14px] text-secondary font-lato p-1 px-4 rounded-[10px] outline-none"/>
+          <input type="text" placeholder={`Search...`} className="text-[14px] text-secondary font-sans p-1 px-4 rounded-[10px] outline-none"/>
           <Image
           className="absolute top-2 right-4 "
             src="./assets/search_icon.svg"

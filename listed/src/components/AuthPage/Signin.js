@@ -75,7 +75,7 @@ const Signin = ({setLogin}) => {
         </button>
       </div>
       <div className="w-full py-8 bg-white flex flex-col p-8  rounded-[20px] [&>*]:text-base">
-        <label htmlFor="email" className="font-lato  ">
+        <label htmlFor="email" className="font-sans  ">
           Email address
         </label>
         <input
@@ -85,7 +85,7 @@ const Signin = ({setLogin}) => {
           placeholder="johndoe@gmail.com"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password" className="font-lato mt-5">
+        <label htmlFor="password" className="font-sans mt-5">
           Password
         </label>
         <input
@@ -94,7 +94,7 @@ const Signin = ({setLogin}) => {
           className="bg-background  p-1 px-4 mt-2 rounded-[10px] outline-none"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <a href="" className="mt-5 text-[#346BD4] text-base font-lato ">
+        <a href="" className="mt-5 text-[#346BD4] text-base font-sans ">
           Forgot Password?
         </a>
         <button
@@ -105,7 +105,7 @@ const Signin = ({setLogin}) => {
         </button>
         {errMessage && <div className="text-red-500">{errMessage}</div>}
       </div>
-      <p className="text-center font-lato mt-5">
+      <p className="text-center font-sans mt-5">
         <span className="text-secondary ">Don’t have an account?</span>
         <span className="cursor-pointer" onClick={()=>setLogin(false)}> Register here</span>
       </p>

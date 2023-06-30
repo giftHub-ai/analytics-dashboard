@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,7 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         montserrat: ["Montserrat"],
-        lato: ["Lato",'ui-sans-serif'],
+        lato: ['Lato','sans-serif',]
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

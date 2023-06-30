@@ -53,7 +53,7 @@ const modifiedPathname = router.pathname.replace('/dashboard', '');
           <option value="5">August - Sept 2021</option>
         </select>
       </div>
-      <ResponsiveContainer width="100%" height={270}>
+      <ResponsiveContainer width="95%" height={270}>
         <LineChart width={1000} height={270} data={data}>
           <Line
             type="monotone"

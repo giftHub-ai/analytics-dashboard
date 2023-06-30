@@ -34,7 +34,7 @@ const ScheduleCard = ({ ind, title, time, location }) => {
   return (
     <div className="flex mb-2">
       <VerticalLine ind={ind} />
-      <div className=" font-lato">
+      <div className=" font-sans">
         <p className="font-bold text-sm text-[#666]">{title}</p>
         <p className="text-xs text-[#999]">{time}</p>
         <p className="text-xs text-[#999]">{location}</p>
