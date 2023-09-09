@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 const leftData = [
   { img: "./assets/dashboard_icon.svg", text: "Dashboard" },
-  { img: "./assets/left_transaction_icon.svg", text: "Transactions" },
-  { img: "./assets/left_schedule_icon.svg", text: "Schedules" },
-  { img: "./assets/left_user_icon.svg", text: "Users" },
+  { img: "./assets/left_transaction_icon.svg", text: "Products" },
+  { img: "./assets/left_schedule_icon.svg", text: "Customers" },
+  { img: "./assets/left_user_icon.svg", text: "Sales Trends" },
   { img: "./assets/left_setting_icon.svg", text: "Settings" },
 ];
 const Leftpane = ({

@@ -1,24 +1,15 @@
 import { useEffect, useState } from "react";
 import { auth } from "../src/config/firebase";
 import Image from "next/image";
-import Leftpane from "@/src/components/DashboardPage/Leftpane.dashboard";
+import Leftpane from "@/src/components/Leftpane.dashboard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signOutUser } from "../src/config/firebase";
-import Header from "@/src/components/DashboardPage/Header.dashboard";
-import Cards from "@/src/components/DashboardPage/Cards.dashboard";
-import LineChart from "@/src/components/DashboardPage/LineChart.dashboard";
-import RenderPieChart from "@/src/components/DashboardPage/PieChart.dashboard";
-import Schedule from "@/src/components/DashboardPage/Schedule.dashboard";
+import LandingPage from "@/src/Sections/LandingPage";
+import PageSelector from "@/src/components/PageSelector";
+
 
 const dashboard = () => {
-  const [domLoaded, setDomLoaded] = useState(false);
-  useEffect(() => {
-    setDomLoaded(true);
-  }, []);
-
   const [loading, setLoading] = useState(false);
-
-
   async function IsUserSignedIn() {
     try {
       var userData = null;
@@ -73,13 +64,8 @@ const dashboard = () => {
             showLeftPane ? "basis-5/5" : null
           }`}
         >
-          <Header />
-          <Cards />
-          <LineChart />
-          <div className="lg:flex gap-x-8 ">
-            {domLoaded && <RenderPieChart />}
-            <Schedule />
-          </div>
+          {/* <LandingPage/> */}
+          <PageSelector activeState={activeState}/>
         </div>
       </div>
     </>
