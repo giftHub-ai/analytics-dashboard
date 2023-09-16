@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signOutUser } from "../src/config/firebase";
 import LandingPage from "@/src/Sections/LandingPage";
 import PageSelector from "@/src/components/PageSelector";
+import Header from "@/src/components/Header.dashboard";
 
 
 const dashboard = () => {
@@ -52,7 +53,7 @@ const dashboard = () => {
   const [activeState, setActiveState] = useState(0);
   return (
     <>
-      <div className={`min-h-screen flex text-white min-w-fit md:p-5 my-4   ${showLeftPane?"px-0 ": "px-4"}`}>
+      <div className={`min-h-screen md:flex text-white min-w-fit md:p-5 my-4   ${showLeftPane?"p-0 ": "px-4"}`}>
         <Leftpane
           activeState={activeState}
           setActiveState={setActiveState}
@@ -64,7 +65,7 @@ const dashboard = () => {
             showLeftPane ? "basis-5/5" : null
           }`}
         >
-          {/* <LandingPage/> */}
+            <Header />
           <PageSelector activeState={activeState}/>
         </div>
       </div>

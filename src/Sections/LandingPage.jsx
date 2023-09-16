@@ -12,10 +12,10 @@ const LandingPage = () => {
   
   return (
     <div>
-         <Header />
+       
           <Cards />
           <LineChart />
-          <div className="lg:flex gap-x-8 ">
+          <div className="  flex gap-x-8 justify-between flex-col md:flex-row ">
             {domLoaded && <RenderPieChart />}
             <Schedule />
           </div>

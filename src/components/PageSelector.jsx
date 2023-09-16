@@ -20,7 +20,7 @@ const PageSelector = ({ activeState }) => {
   }
 
   return (
-    <div>
+    <div >
       {content}
     </div>
   );
