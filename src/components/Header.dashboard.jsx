@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="flex justify-between  items-center ">
+    <div className="flex justify-between  items-center mb-4 ">
       <h2 className="text-2xl  font-montserrat font-bold text-black max-sm:ml-8">Dashboard</h2>
       <div className=" flex gap-x-7  items-center ">
         {/* <div className=" relative md:block hidden">
@@ -23,7 +23,7 @@ const Header = () => {
             alt="search icon"
           ></Image>
         <Image
-          className="rounded-full w-[50px] h-[50px]"
+          className="rounded-full w-[40px] h-[40px]"
             src="/assets/image1.png"
             height={100}
             width={120}

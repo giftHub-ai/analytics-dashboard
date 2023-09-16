@@ -67,7 +67,7 @@ const RenderPieChart = () => {
 
   if (loading === true) return <div className="">Loading</div>;
   return (
-    <div className="mt-4  basis-1/2 h-full min-h-full">
+    <div className="mt-4 basis-[45%] h-full min-h-full">
       <div className=" bg-white   rounded-[20px] flex w-full relative min-h-full pb-6">
         <div className="absolute top-4 text-black z-20 w-full  flex justify-between px-4 ">
           <h6 className="font-montserrat text-[18px] font-bold">

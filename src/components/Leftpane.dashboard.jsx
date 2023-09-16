@@ -34,15 +34,13 @@ const Leftpane = ({
         alt="E"
         height={20}
         width={20}
-        className={`text-black md:hidden  fixed mt-4  z-50 ${  showleftPane?"ml-40 text-white ":null}`}
+        className={`text-black md:hidden  fixed mt-4  z-50 left-5 ${  showleftPane?"  text-white ":null}`}
         onClick={() => {
           setShowLeftPane(!showleftPane);
         }}
       ></Image>
       <div
-        className={`  md:block md:basis-1/5 bg-black min-h-full min-w-[12rem]  ${  showleftPane?"min-w-[150px] ": "rounded-[30px]"}  ${
-          showleftPane ? "block basis-4/5 h-screen z-30" : "hidden"
-        }`}
+        className={`  md:block md:basis-1/5 bg-black  min-w-[12rem]  h-[95vh] sticky md:top-4 top-0  ${showleftPane?"flex basis-4/5 z-30 opacity-90 h-full": " hidden rounded-[30px]"}`} 
       >
         <div className=" w-[70%] mx-auto flex flex-col justify-evenly min-h-full  ">
           <div className="">
